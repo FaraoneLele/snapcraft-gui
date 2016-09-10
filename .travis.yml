@@ -1,0 +1,21 @@
+language: cpp
+
+compiler:
+  - gcc
+
+sudo: required
+dist: xenial
+
+before_install:
+  - sudo apt update -qq
+  - sudo apt install -qq build-essential qt5-default qttools5-dev-tools qttools5-dev
+
+script:
+  - cd snapcraft-qt
+  - qmake -r
+  - make
+  - make check
+  - qmake --version
+
+notifications:
+  email: false
